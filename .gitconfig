@@ -1,3 +1,47 @@
+# 核心通用配置
 [user]
-	name = LuoDiKaiHua
-	email = 823691221@qq.com
+    name = LuoDiKaiHua
+    email = 823691221@qq.com
+[core]
+    autocrlf = input
+    editor = subl --wait
+    eol = lf
+    ignorecase = false
+    longpaths = true
+    quotepath = false
+    safecrlf = true
+[push]
+    autoSetupRemote
+[fetch]
+    recurseSubmodules = true
+[safe]
+    directory = *
+
+# 仓库通用配置
+[init]
+    defaultBranch = main
+[http]
+    postBuffer = 524288000
+	# proxy = socks5://127.0.0.1:10808
+
+# 别名配置
+[alias]
+    ignore = "!f() { curl -sL https://www.toptal.com/developers/gitignore/api/$@; }; f"
+
+# 外部 Merge 工具配置
+[merge]
+	tool = bc
+[mergetool]
+    keepBackup = false
+    trustExitCode = true
+[mergetool "bc"]
+    cmd = bcomp "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+
+# 外部 Diff 工具配置
+[diff]
+	tool = bc
+[difftool]
+	prompt = false
+	trustExitCode = true
+[difftool "bc"]
+	cmd = bcomp "$LOCAL" "$REMOTE"

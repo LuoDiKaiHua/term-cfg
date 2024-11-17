@@ -5,15 +5,19 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+# 设置存储 zinit 和相关插件的文件夹路径
 ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
 
+# 如果 zinit 不存在，则下载 zinit
 if [[ ! -d "$ZINIT_HOME" ]]; then
 	mkdir -p "$(dirname $ZINIT_HOME)"
 	git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
+# 加载 zinit
 source "${ZINIT_HOME}/zinit.zsh"
 
+# 添加 Powerlevel10k
 zinit ice depth=1; zinit light romkatv/powerlevel10k
 
 zinit light zsh-users/zsh-syntax-highlighting
@@ -57,7 +61,6 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 
 alias ls='ls --color'
 alias cls='clear'
-alias c='clear'
 
 eval "$(fzf --zsh)"
 eval "$(zoxide init --cmd cd zsh)"
