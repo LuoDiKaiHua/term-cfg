@@ -5,6 +5,10 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+if [ -f ~/.bash_profile ]; then
+    source ~/.bash_profile
+fi
+
 if command -v brew >/dev/null 2>&1; then
 	eval "$(brew shellenv)"
 fi
