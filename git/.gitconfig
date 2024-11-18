@@ -10,28 +10,33 @@
     longpaths = true
     quotepath = false
     safecrlf = true
+    symlinks = true
+    excludesfile = ~/.gitignore_global
 [push]
     autoSetupRemote
 [fetch]
     recurseSubmodules = true
 [safe]
     directory = *
+[credential]
+    helper = cache --timeout=86400
 
 # 仓库通用配置
 [init]
     defaultBranch = main
 [http]
-    postBuffer = 524288000
-	# proxy = socks5://127.0.0.1:10808
+    postBuffer = 1048576000
 
 # 别名配置
 [alias]
+    current = "rev-parse --abbrev-ref HEAD"
     ignore = "!f() { curl -sL https://www.toptal.com/developers/gitignore/api/$@; }; f"
 
 # 外部 Merge 工具配置
 [merge]
-	tool = bc
+    tool = bc
 [mergetool]
+    prompt = false
     keepBackup = false
     trustExitCode = true
 [mergetool "bc"]
@@ -39,9 +44,9 @@
 
 # 外部 Diff 工具配置
 [diff]
-	tool = bc
+    tool = bc
 [difftool]
-	prompt = false
-	trustExitCode = true
+    prompt = false
+    trustExitCode = true
 [difftool "bc"]
-	cmd = bcomp "$LOCAL" "$REMOTE"
+    cmd = bcomp "$LOCAL" "$REMOTE"
