@@ -21,6 +21,9 @@
 [credential]
     helper = cache --timeout=86400
 
+[includeIf "hasconfig:remote.*.url:git@gitlab.futunn.com:**/**"]
+    path = ~/.gitconfig-gitlab-futu
+
 # 仓库通用配置
 [init]
     defaultBranch = main
