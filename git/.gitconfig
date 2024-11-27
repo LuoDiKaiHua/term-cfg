@@ -57,6 +57,6 @@
   tool = bc
 [difftool]
   prompt = false
-  trustExitCode = true
+  # trustExitCode = true
 [difftool "bc"]
   cmd = bcomp "$LOCAL" "$REMOTE"
