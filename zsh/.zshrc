@@ -9,10 +9,6 @@ if [ -f ~/.bash_profile ]; then
     source ~/.bash_profile
 fi
 
-if command -v brew >/dev/null 2>&1; then
-	eval "$(brew shellenv)"
-fi
-
 # 设置存储 zinit 和相关插件的文件夹路径
 ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
 
