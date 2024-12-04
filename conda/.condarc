@@ -1,4 +1,7 @@
 channels:
-  - https://repo.anaconda.com/pkgs/main
-  - https://repo.anaconda.com/pkgs/r
+  - defaults
+  - conda-forge
+show_channel_urls: false
 auto_activate_base: false
+ssl_verify: true
+channel_priority: flexible
