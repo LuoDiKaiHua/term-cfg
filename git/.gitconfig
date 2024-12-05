@@ -2,6 +2,7 @@
 [user]
   name = LuoDiKaiHua
   email = 823691221@qq.com
+
 [core]
   autocrlf = input
   editor = subl --wait
@@ -12,23 +13,51 @@
   safecrlf = true
   symlinks = true
   excludesfile = ~/global.gitignore
-[push]
-  autoSetupRemote
-[fetch]
-  recurseSubmodules = true
+
+[http]
+  postBuffer = 1048576000
+
 [safe]
   directory = *
+
+[init]
+  defaultBranch = main
+
+[push]
+  autoSetupRemote = true
+
+[fetch]
+  # fetch 时清理废弃的远端引用
+  prune = true
+  recurseSubmodules = true
+
+[status]
+  short = true
+
 [credential]
   helper = cache --timeout=86400
 
-[includeIf "hasconfig:remote.*.url:git@gitlab.futunn.com:**/**"]
-  path = ~/gitlab-futu.gitconfig
+# 外部 Merge 工具配置
+[merge]
+  tool = bc
 
-# 仓库通用配置
-[init]
-  defaultBranch = main
-[http]
-  postBuffer = 1048576000
+[mergetool]
+  prompt = false
+  keepBackup = false
+  trustExitCode = true
+
+[mergetool "bc"]
+  cmd = bcomp "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
+
+# 外部 Diff 工具配置
+[diff]
+  tool = bc
+
+[difftool]
+  prompt = false
+
+[difftool "bc"]
+  cmd = bcomp "$LOCAL" "$REMOTE"
 
 # 别名配置
 [alias]
@@ -42,21 +71,5 @@
     }; f"
   ignore = "!f() { curl -sL https://www.toptal.com/developers/gitignore/api/$@; }; f"
 
-# 外部 Merge 工具配置
-[merge]
-  tool = bc
-[mergetool]
-  prompt = false
-  keepBackup = false
-  trustExitCode = true
-[mergetool "bc"]
-  cmd = bcomp "$LOCAL" "$REMOTE" "$BASE" "$MERGED"
-
-# 外部 Diff 工具配置
-[diff]
-  tool = bc
-[difftool]
-  prompt = false
-  # trustExitCode = true
-[difftool "bc"]
-  cmd = bcomp "$LOCAL" "$REMOTE"
+[includeIf "hasconfig:remote.*.url:git@gitlab.futunn.com:**/**"]
+  path = ~/gitlab-futu.gitconfig
