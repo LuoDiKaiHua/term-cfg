@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 if [ -f ~/.bash_profile ]; then
-    source ~/.bash_profile
+  source ~/.bash_profile
 fi
 
 # 设置存储 zinit 和相关插件的文件夹路径
@@ -14,8 +14,8 @@ ZINIT_HOME="${XDG_DATA_HOME:-$HOME/.local/share}/zinit/zinit.git"
 
 # 如果 zinit 不存在，则下载 zinit
 if [[ ! -d "$ZINIT_HOME" ]]; then
-	mkdir -p "$(dirname $ZINIT_HOME)"
-	git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+  mkdir -p "$(dirname $ZINIT_HOME)"
+  git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 fi
 
 # 加载 zinit
